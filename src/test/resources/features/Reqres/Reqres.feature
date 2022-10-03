@@ -18,7 +18,7 @@ Feature: Test API in Reqres
   Scenario Outline: Get list user with invalid string parameter
     Given get list user with invalid string parameter "<page>"
     When send request get list user
-    Then should return 404 not found
+    Then should return 400 bad request
     Examples:
     |page|
     |abc |
@@ -29,7 +29,7 @@ Feature: Test API in Reqres
   Scenario Outline: Get list user with invalid special char parameter
     Given get list user with invalid special char parameter "<page>"
     When send request get list user
-    Then should return 404 not found
+    Then should return 400 bad request
     Examples:
       |page|
       |@@@ |
@@ -42,6 +42,7 @@ Feature: Test API in Reqres
     When send request get list user without parameter
     Then should return 200 ok
     And response body page should be 1
+    And get list user json schema validator
 
   @latihan
   #Scenario 2.1
@@ -66,6 +67,7 @@ Feature: Test API in Reqres
     When send request get single user
     Then should return 200 ok
     And response body id should be <id>
+    And get single user json schema validator
     Examples:
     |id|
     |1 |
@@ -111,6 +113,7 @@ Feature: Test API in Reqres
     When send request get single user without parameter
     Then should return 200 ok
     And response body page should be 1
+    And get single user without parameter json schema validator
 
   @latihan
   #Scenario 4.1
@@ -143,6 +146,7 @@ Feature: Test API in Reqres
     When send request patch update user
     Then should return 200 ok
     And response body should contain name "Bunga Edit Incomplete JSON for Patch"
+    And patch update user json schema validator
     Examples:
       |id|
       |1 |
@@ -206,6 +210,7 @@ Feature: Test API in Reqres
     When send request get list resource without path
     Then should return 200 ok
     And response body page should be 1
+    And get list resource json schema validator
 
   @tugas
   #Scenario 7.2
@@ -214,6 +219,7 @@ Feature: Test API in Reqres
     When send request get list resource
     Then should return 200 ok
     And response body page should be <page>
+    And get list resource json schema validator
     Examples:
     |page|
     |1   |
@@ -224,7 +230,7 @@ Feature: Test API in Reqres
   Scenario Outline: Get list resource with invalid string parameter
     Given get list resource with invalid parameter page "<page>"
     When send request get list resource
-    Then should return 404 not found
+    Then should return 400 bad request
     Examples:
       |page|
       |abc |
@@ -235,8 +241,7 @@ Feature: Test API in Reqres
   Scenario Outline: Get list resource with not listed parameter page
     Given get list resource with parameter page <page>
     When send request get list resource
-    Then should return 200 ok
-    And response body page should be <page>
+    Then should return 400 bad request
     Examples:
       |page|
       |3   |
@@ -247,7 +252,7 @@ Feature: Test API in Reqres
   Scenario Outline: Get list resource with invalid special char parameter
     Given get list resource with invalid parameter page "<page>"
     When send request get list resource
-    Then should return 404 not found
+    Then should return 400 bad request
     Examples:
       |page|
       |abc |
@@ -260,6 +265,7 @@ Feature: Test API in Reqres
     When send request get single resource
     Then should return 200 ok
     And response body id should be <id>
+    And get single resource json schema validator
     Examples:
       |id|
       |1 |
@@ -304,6 +310,7 @@ Feature: Test API in Reqres
     Given post register new user
     When send request post register new user
     Then should return 200 ok
+    And post register new user json schema validator
 
   @tugas
   #Scenario 9.2
@@ -311,6 +318,7 @@ Feature: Test API in Reqres
     Given post register new user invalid json
     When send request post register new user
     Then should return 400 bad request
+    And post register invalid json schema validator
 
   @tugas
   #Scenario 10.1
@@ -318,17 +326,19 @@ Feature: Test API in Reqres
     Given post login with valid json
     When send request post login
     Then should return 200 ok
+    And post login json schema validator
 
   @tugas
   #Scenario 10.2
   Scenario: Post login with unregistered user
     Given post login with unregistered user
     When send request post login
-    Then should return 400 bad request
+    Then should return 404 not found
 
   @tugas
   #Scenario 10.3
-  Scenario: Post login with incomplete data
-    Given post login with incomplete json
+  Scenario: Post login with invalid json
+    Given post login with invalid json
     When send request post login
     Then should return 400 bad request
+    And post login invalid json schema validator

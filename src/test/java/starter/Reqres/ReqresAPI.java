@@ -15,7 +15,7 @@ public class ReqresAPI {
     public static final String GET_SINGLE_USERS_NOPARAM = URL + "/api/users";
     public static final String POST_CREATE_NEW_USER = URL+"/api/users";
     public static final String DIR = System.getProperty("user.dir");
-    public static final String JSON_FILE = DIR+"/src/test/resources/features/JSON";
+    public static final String JSON_FILE = DIR+"/src/test/resources/JSON";
     public static final String PUT_UPDATE_USER = URL + "/api/users/{id}";
     public static final String PATCH_UPDATE_USER = URL + "/api/users/{id}";
     public static final String DELETE_USER = URL + "/api/users/{id}";
@@ -150,8 +150,8 @@ public class ReqresAPI {
                 .contentType(ContentType.JSON)
                 .body(json);
     }
-    @Step("Post login with incomplete data")
-    public void postLoginWithIncompleteData(File json){
+    @Step("Post login with incomplete json")
+    public void postLoginWithInvalidJson(File json){
         SerenityRest.given()
                 .contentType(ContentType.JSON)
                 .body(json);

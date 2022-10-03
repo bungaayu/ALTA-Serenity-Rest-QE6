@@ -38,7 +38,7 @@ public class ReqresStepDef {
     }
     @And("get list user json schema validator")
     public void getListUserJsonSchemaValidator() {
-        File json = new File(ReqresAPI.JSON_FILE+"/JsonSchema/GetListUserJsonSchemaValidator.json");
+        File json = new File(ReqresAPI.JSON_FILE+"/JsonSchema/GetListUserSchemaValidator.json");
         SerenityRest.then().assertThat().body(JsonSchemaValidator.matchesJsonSchema(json));
     }
 
@@ -90,7 +90,7 @@ public class ReqresStepDef {
     }
     @And("post create new user json schema validator")
     public void postCreateNewUserJsonSchemaValidator() {
-        File json = new File(ReqresAPI.JSON_FILE+"/JsonSchema/PostCreateNewUserJsonSchemaValidator.json");
+        File json = new File(ReqresAPI.JSON_FILE+"/JsonSchema/PostCreateNewUserSchemaValidator.json");
         SerenityRest.then().assertThat().body(JsonSchemaValidator.matchesJsonSchema(json));
     }
 
@@ -118,6 +118,11 @@ public class ReqresStepDef {
     public void responseBodyIdShouldBe(int id) {
         SerenityRest.then().body(ReqresResponses.ID,equalTo(id));
     }
+    @And("get single user json schema validator")
+    public void getSingleUserJsonSchemaValidator() {
+        File json = new File(ReqresAPI.JSON_FILE+"/JsonSchema/GetSingleUserSchemaValidator.json");
+        SerenityRest.then().assertThat().body(JsonSchemaValidator.matchesJsonSchema(json));
+    }
 
     //Scenario 3.3
     @Given("get single user with invalid string id {string}")
@@ -140,6 +145,11 @@ public class ReqresStepDef {
     public void sendRequestGetSingleUserWithoutParameter() {
         SerenityRest.when().get(ReqresAPI.GET_SINGLE_USERS_NOPARAM);
     }
+    @And("get single user without parameter json schema validator")
+    public void getSingleUserWithoutParameterJsonSchemaValidator() {
+        File json = new File(ReqresAPI.JSON_FILE+"/JsonSchema/GetSingleUserNoParamSchemaValidator.json");
+        SerenityRest.then().assertThat().body(JsonSchemaValidator.matchesJsonSchema(json));
+    }
 
     //Scenario 4.1
     @Given("put update user with id {int}")
@@ -153,9 +163,10 @@ public class ReqresStepDef {
     }
     @And("put update user json schema validator")
     public void putUpdateUserJsonSchemaValidator() {
-        File json = new File(ReqresAPI.JSON_FILE+"/JsonSchema/PutUpdateUserJsonSchemaValidator.json");
+        File json = new File(ReqresAPI.JSON_FILE+"/JsonSchema/PutUpdateUserSchemaValidator.json");
         SerenityRest.then().assertThat().body(JsonSchemaValidator.matchesJsonSchema(json));
     }
+
     //Scenario 4.2
     @Given("put update user incomplete json with id {int}")
     public void putUpdateUserIncompleteJsonWithIdId(int id) {
@@ -177,6 +188,12 @@ public class ReqresStepDef {
     public void responseBodyShouldContainName(String name) {
         SerenityRest.then()
                 .body(ReqresResponses.NAME,equalTo(name));
+    }
+    @And("patch update user json schema validator")
+    public void patchUpdateUserJsonSchemaValidator() {
+        File json = new File(ReqresAPI.JSON_FILE+"/JsonSchema/PatchUpdateUserSchemaValidator.json");
+        SerenityRest.then().assertThat().body(JsonSchemaValidator.matchesJsonSchema(json));
+
     }
 
     //Scenario 5.2
@@ -231,6 +248,11 @@ public class ReqresStepDef {
     public void sendRequestGetListResourceWithoutPath() {
         SerenityRest.when().get(ReqresAPI.GET_LIST_RESOURCE_NOPATH);
     }
+    @And("get list resource json schema validator")
+    public void getListResourceJsonSchemaValidator() {
+        File json = new File(ReqresAPI.JSON_FILE+"/JsonSchema/GetListResourceSchemaValidator.json");
+        SerenityRest.then().assertThat().body(JsonSchemaValidator.matchesJsonSchema(json));
+    }
 
     //Scenario 7.2
     @Given("get list resource with parameter page {int}")
@@ -257,6 +279,11 @@ public class ReqresStepDef {
     public void sendRequestGetSingleResource() {
         SerenityRest.when().get(ReqresAPI.GET_SINGLE_RESOURCE);
     }
+    @And("get single resource json schema validator")
+    public void getSingleResourceJsonSchemaValidator() {
+        File json = new File(ReqresAPI.JSON_FILE+"/JsonSchema/GetSingleResourceSchemaValidator.json");
+        SerenityRest.then().assertThat().body(JsonSchemaValidator.matchesJsonSchema(json));
+    }
 
     //Scenario 8.3
     @Given("get single resource with invalid id {string}")
@@ -274,12 +301,22 @@ public class ReqresStepDef {
     public void sendRequestPostRegisterNewUser() {
         SerenityRest.when().post(ReqresAPI.POST_REGISTER);
     }
+    @And("post register new user json schema validator")
+    public void postRegisterNewUserJsonSchemaValidator() {
+        File json = new File(ReqresAPI.JSON_FILE+"/JsonSchema/PostRegisterSchemaValidator.json");
+        SerenityRest.then().assertThat().body(JsonSchemaValidator.matchesJsonSchema(json));
+    }
 
     //Scenario 9.2
     @Given("post register new user invalid json")
     public void postRegisterNewUserInvalidJson() {
         File json = new File(ReqresAPI.JSON_FILE+"/RequestBody/PostRegisterInvalid.json");
         reqresAPI.postRegisterNewUser(json);
+    }
+    @And("post register invalid json schema validator")
+    public void postRegisterInvalidJsonSchemaValidator() {
+        File json = new File(ReqresAPI.JSON_FILE+"/JsonSchema/PostRegisterInvSchemaValidator.json");
+        SerenityRest.then().assertThat().body(JsonSchemaValidator.matchesJsonSchema(json));
     }
 
     //Scenario 10.1
@@ -292,6 +329,11 @@ public class ReqresStepDef {
     public void sendRequestPostLogin() {
         SerenityRest.when().post(ReqresAPI.POST_LOGIN);
     }
+    @And("post login json schema validator")
+    public void postLoginJsonSchemaValidator() {
+        File json = new File(ReqresAPI.JSON_FILE+"/JsonSchema/PostLoginSchemaValidator.json");
+        SerenityRest.then().assertThat().body(JsonSchemaValidator.matchesJsonSchema(json));
+    }
 
     //Scenario 10.2
     @Given("post login with unregistered user")
@@ -301,12 +343,16 @@ public class ReqresStepDef {
     }
 
     //Scenario 10.3
-    @Given("post login with incomplete json")
-    public void postLoginWithIncompleteJson() {
+    @Given("post login with invalid json")
+    public void postLoginWithInvalidJson() {
         File json = new File(ReqresAPI.JSON_FILE+"/RequestBody/PostLoginIncomplete.json");
-        reqresAPI.postLoginWithIncompleteData(json);
+        reqresAPI.postLoginWithInvalidJson(json);
     }
-
+    @And("post login invalid json schema validator")
+    public void postLoginInvalidJsonSchemaValidator() {
+        File json = new File(ReqresAPI.JSON_FILE+"/JsonSchema/PostLoginInvSchemaValidator.json");
+        SerenityRest.then().assertThat().body(JsonSchemaValidator.matchesJsonSchema(json));
+    }
 
 //Thread.sleep(3000);
 
