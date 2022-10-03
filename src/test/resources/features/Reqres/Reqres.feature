@@ -333,7 +333,7 @@ Feature: Test API in Reqres
   Scenario: Post login with unregistered user
     Given post login with unregistered user
     When send request post login
-    Then should return 404 not found
+    Then should return 400 bad request
 
   @tugas
   #Scenario 10.3
