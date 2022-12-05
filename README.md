@@ -10,7 +10,6 @@
 
 </div>
 
-
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
@@ -19,8 +18,7 @@
 This is the report using Rest Assured to Automate API testing on reqres.in. Implementing gherkin syntax for the main feature.
 This project is based on ***[Reqres - A freely available REST API.](https://reqres.in)***
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
+Testing Documentation on Spreadsheet: [Documentation](https://docs.google.com/spreadsheets/d/1tGaMHlrTy36IBHknMJSJr5UhTKNk6LRatoisD0Ki7a4/edit?usp=sharing)
 
 ### Built With
 
@@ -28,14 +26,10 @@ This project is based on ***[Reqres - A freely available REST API.](https://reqr
 * [Intellij IDEA]()
 * [Maven]()
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 <!-- GETTING STARTED -->
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps.
-
 
 ### Installation
 
@@ -62,9 +56,6 @@ To get a local copy up and running follow these simple example steps.
 5. Select maven
 6. Click OK
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 <!-- FEATURE TESTED -->
 ## Feature Tested
 
@@ -81,8 +72,6 @@ To get a local copy up and running follow these simple example steps.
    * GET List Resource with page
    * GET Single Resource with ID
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 <!-- CONTACT -->
 ## Contact
 
@@ -90,18 +79,12 @@ Bunga Ayu Ferdiyanti - bungaayu9599@gmail.com
 
 Project Link: [https://github.com/bungaayu/Reqres-APITesting](https://github.com/bungaayu/Reqres-APITesting)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
 * [Alterra Academy](https://academy.alterra.id/)
 * [Rest Assured](https://github.com/rest-assured/rest-assured)
 * [Our Mentor - Wisnu Munawar](https://github.com/wisnuwm)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
